@@ -1,9 +1,12 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
+
+import Home from './components/Home/Home';
 
 function App() {
   return (
     <div>
-      Welcome to Know Your Book
+      <Route exact path="/" component={Home} />
     </div>
   );
 }
