@@ -4,7 +4,8 @@ import {
   LOGIN_FAILURE,
   GET_USER_REQUEST,
   GET_USER_SUCCESS,
-  GET_USER_FAILURE
+  GET_USER_FAILURE,
+  LOGOUT_REQUEST
 } from '../actions'
 
 const initialState = {
@@ -38,6 +39,14 @@ export default (state = initialState, action) => {
         loading: false
       }
     case GET_USER_FAILURE:
+      return {
+        ...state,
+        user: {},
+        token: '',
+        loggedIn: false,
+        loading: false
+      }
+    case LOGOUT_REQUEST:
       return {
         ...state,
         user: {},

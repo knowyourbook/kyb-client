@@ -29,3 +29,10 @@ export const getUser = () => dispatch => {
     dispatch({ type: GET_USER_FAILURE })
   }
 }
+
+export const LOGOUT_REQUEST = 'LOGOUT_REQUEST'
+
+export const logout = () => dispatch => {
+  localStorage.removeItem('kyb-token')
+  dispatch({ type: LOGOUT_REQUEST })
+}

@@ -7,4 +7,6 @@ export {
   GET_USER_SUCCESS,
   GET_USER_FAILURE,
   getUser,
+  LOGOUT_REQUEST,
+  logout,
 } from './authActions.js'
