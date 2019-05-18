@@ -13,7 +13,7 @@ function Auth (props) {
   useEffect(
     () => {
       if (isLoggedIn) {
-        props.history.push('/')
+        props.history.goBack()
       }
     },
     [isLoggedIn, props.history]
