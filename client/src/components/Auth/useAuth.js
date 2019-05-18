@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 function useAuth(ComposedComponent) {
   function Authenticate(props) {
+
     useEffect(
       () => {
         if (!props.loading && !props.isLoggedIn) {
