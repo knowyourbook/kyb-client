@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import { login } from '../../store/actions'
@@ -7,13 +7,23 @@ import { login } from '../../store/actions'
 function Auth (props) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [role, setRole] = useState('admin')
+  const { isLoggedIn } = props
+
+  useEffect(
+    () => {
+      if (isLoggedIn) {
+        props.history.push('/')
+      }
+    },
+    [isLoggedIn, props.history]
+  )
 
   function handleSubmit(e) {
     e.preventDefault()
     props.login({username, password})
     setUsername('')
     setPassword('')
-    props.history.push('/')
   }
 
   return (
@@ -30,6 +40,12 @@ function Auth (props) {
           value={password}
           placeholder="password"
           onChange={e => setPassword(e.target.value)}
+        />
+        <input
+          type="select"
+          value={role}
+          placeholder="role"
+          onChange={e => setRole(e.target.value)}
         />
         <button>Login</button>
       </form>
