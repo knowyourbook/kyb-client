@@ -4,7 +4,12 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE'
 
 export const login = user => dispatch => {
   // TODO: connect to server to authenticate
-  dispatch({ type: LOGIN_SUCCESS, payload: user })
+  const token = 'dummy_token'
+  localStorage.setItem('kyb-token', token)
+  dispatch({
+    type: LOGIN_SUCCESS,
+    payload: { user: {}, token }
+  })
 }
 
 export const GET_USER_REQUEST = 'GET_USER_REQUEST'
@@ -14,9 +19,11 @@ export const GET_USER_FAILURE = 'GET_USER_FAILURE'
 export const getUser = () => dispatch => {
   // TODO: connect to server to authenticate
   const token = localStorage.getItem('kyb-token')
-  console.log({token})
   if (token) {
-    dispatch({ type: GET_USER_SUCCESS, payload: { user: {}, token: 'token' } })
+    dispatch({
+      type: GET_USER_SUCCESS,
+      payload: { user: {}, token }
+    })
   } else {
     dispatch({ type: GET_USER_FAILURE })
   }

@@ -18,7 +18,8 @@ export default (state = initialState, action) => {
     case LOGIN_SUCCESS:
       return {
         ...state,
-        user: action.payload,
+        user: action.payload.user,
+        token: action.payload.token,
         loggedIn: true
       }
     case GET_USER_SUCCESS:
