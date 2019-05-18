@@ -8,7 +8,7 @@ export const login = user => dispatch => {
   localStorage.setItem('kyb-token', token)
   dispatch({
     type: LOGIN_SUCCESS,
-    payload: { user: {role: 'admin'}, token }
+    payload: { user, token }
   })
 }
 

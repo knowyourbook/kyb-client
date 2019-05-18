@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 
 import { login } from '../../store/actions'
 
-
 function Auth (props) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -19,9 +18,18 @@ function Auth (props) {
     [isLoggedIn, props.history]
   )
 
+  useEffect(
+    () => {
+      if (isLoggedIn) {
+        props.history.push('/')
+      }
+    },
+    []
+  )
+
   function handleSubmit(e) {
     e.preventDefault()
-    props.login({username, password})
+    props.login({ username, password, role })
     setUsername('')
     setPassword('')
   }
