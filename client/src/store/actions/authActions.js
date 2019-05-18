@@ -8,7 +8,7 @@ export const login = user => dispatch => {
   localStorage.setItem('kyb-token', token)
   dispatch({
     type: LOGIN_SUCCESS,
-    payload: { user: {}, token }
+    payload: { user: {role: 'admin'}, token }
   })
 }
 
@@ -23,7 +23,7 @@ export const getUser = () => dispatch => {
   if (token) {
     dispatch({
       type: GET_USER_SUCCESS,
-      payload: { user: {}, token }
+      payload: { user: {role: 'admin'}, token }
     })
   } else {
     dispatch({ type: GET_USER_FAILURE })
