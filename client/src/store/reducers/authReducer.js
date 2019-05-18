@@ -10,7 +10,8 @@ import {
 const initialState = {
   user: {},
   token: '',
-  loggedIn: false
+  loggedIn: false,
+  loading: true
 }
 
 export default (state = initialState, action) => {
@@ -20,21 +21,29 @@ export default (state = initialState, action) => {
         ...state,
         user: action.payload.user,
         token: action.payload.token,
-        loggedIn: true
+        loggedIn: true,
+        loading: false
+      }
+    case GET_USER_REQUEST:
+      return {
+        ...state,
+        loading: true
       }
     case GET_USER_SUCCESS:
       return {
         ...state,
         user: action.payload.user,
         token: action.payload.token,
-        loggedIn: true
+        loggedIn: true,
+        loading: false
       }
     case GET_USER_FAILURE:
       return {
         ...state,
         user: {},
         token: '',
-        loggedIn: false
+        loggedIn: false,
+        loading: false
       }
     default:
       return state

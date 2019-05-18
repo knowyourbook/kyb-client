@@ -8,12 +8,12 @@ import useAuth from './components/Auth/useAuth'
 import { getUser } from './store/actions/index'
 
 function App(props) {
-  useEffect(
-    () => {
-      props.getUser()
-    },
-    []
-  )
+  const { getUser } = props
+
+  useEffect(() => {
+    getUser()
+  }, [getUser])
+
   return (
     <div>
       <Route exact path="/" component={useAuth(Home)} />
@@ -22,4 +22,7 @@ function App(props) {
   )
 }
 
-export default connect(() => ({ }), {getUser})(App)
+export default connect(
+  () => ({}),
+  { getUser }
+)(App)

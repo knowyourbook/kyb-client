@@ -5,15 +5,16 @@ function useAuth(ComposedComponent) {
   function Authenticate(props) {
     useEffect(
       () => {
-        if (!props.isLoggedIn) {
+        if (!props.loading && !props.isLoggedIn) {
           props.history.push('/auth')
         }
       },
-      [props.isLoggedIn, props.history]
+      [props.isLoggedIn, props.loading, props.history]
     )
 
     return (
       <>
+        {props.loading && <div>Loading ... </div>}
         {props.isLoggedIn && <ComposedComponent {...props} />}
       </>
     )
@@ -21,7 +22,8 @@ function useAuth(ComposedComponent) {
 
   function mapStateToProps({ authReducer }) {
     return {
-      isLoggedIn: authReducer.loggedIn
+      isLoggedIn: authReducer.loggedIn,
+      loading: authReducer.loading
     }
   }
 

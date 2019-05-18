@@ -18,6 +18,7 @@ export const GET_USER_FAILURE = 'GET_USER_FAILURE'
 
 export const getUser = () => dispatch => {
   // TODO: connect to server to authenticate
+  dispatch({ type: GET_USER_REQUEST })
   const token = localStorage.getItem('kyb-token')
   if (token) {
     dispatch({
